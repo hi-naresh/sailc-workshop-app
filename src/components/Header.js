@@ -23,11 +23,13 @@ const Header = () => {
     };
 
     return (
-        <header className="bg-gray-800 text-white py-4">
-            <div className="container mx-auto flex justify-between items-center px-4 md:px-0">
-                <Link to="/" className="text-2xl font-bold">SAILC Workshop</Link>
+        <header className="bg-amber-50 text-black py-4">
+            <div className="md:px-20 xs:px-8 mx-auto flex justify-between items-center px-4">
+                <Link to="/" className="flex gap-4 items-center text-2xl font-bold">
+                    <img className={"w-10 h-10"} src={"/sicon.svg"}/>
+                </Link>
                 <div className="md:hidden">
-                    <button onClick={toggleMenu} className="text-white focus:outline-none">
+                    <button onClick={toggleMenu} className="text-black focus:outline-none">
                         {isOpen ? <FaTimes /> : <FaBars />}
                     </button>
                 </div>
