@@ -20,8 +20,11 @@ const db = getFirestore(app);
 export const useFirebase = () => {
     const signInWithGoogle = async () => {
         const provider = new GoogleAuthProvider();
-        const result = await signInWithPopup(auth, provider);
-        return result.user;
+        if (/Mobi|Android/i.test(navigator.userAgent)) {
+            await signInWithPopup(auth, provider);
+        } else {
+            await signInWithPopup(auth, provider);
+        }
     };
 
     const registerForWorkshop = async ({ name, school, number, email, workshopId }) => {
@@ -37,7 +40,7 @@ export const useFirebase = () => {
     };
 
     const getWorkshops = async () => {
-        const q = query(collection(db, 'workshops'));
+        const q = collection(db, 'workshops');
         const querySnapshot = await getDocs(q);
         return querySnapshot.docs.map(doc => doc.data());
     };

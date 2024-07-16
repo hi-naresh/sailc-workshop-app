@@ -6,12 +6,12 @@ const RegisterPopup = ({ workshop, onClose }) => {
     const [name, setName] = useState('');
     const [school, setSchool] = useState('');
     const [number, setNumber] = useState('');
-    const [email, setEmail] = useState('');
+    // const [email, setEmail] = useState('');
     const { registerForWorkshop } = useFirebase();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await registerForWorkshop({ name, school, number, email, workshopId: workshop.id });
+        await registerForWorkshop({ name, school, number, workshopId: workshop.id });
         onClose();
     };
 
@@ -49,14 +49,14 @@ const RegisterPopup = ({ workshop, onClose }) => {
                         onChange={(e) => setNumber(e.target.value)}
                         required
                     />
-                    <input
-                        type="email"
-                        className="w-full p-2 mb-4 border border-gray-300 rounded"
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
+                    {/*<input*/}
+                    {/*    type="email"*/}
+                    {/*    className="w-full p-2 mb-4 border border-gray-300 rounded"*/}
+                    {/*    placeholder="Email"*/}
+                    {/*    value={email}*/}
+                    {/*    onChange={(e) => setEmail(e.target.value)}*/}
+                    {/*    required*/}
+                    {/*/>*/}
                     <button
                         type="submit"
                         className="w-full bg-blue-500 text-white font-bold py-2 rounded"
