@@ -10,16 +10,17 @@ const WorkshopCard = ({ workshop }) => {
             <div className="p-4">
                 <h3 className="text-2xl font-bold">{workshop.title}</h3>
                 <p className="mt-2 text-gray-600">{workshop.brief}</p>
-                <div className={"flex justify-between items-center"}>
+                <p>
+                    <span className="font-bold">Capacity:</span> {"0/" + workshop.capacity}
+                </p>
+                <div className={"flex justify-center items-center"}>
                     <button
                         onClick={() => setIsOpen(true)}
-                        className="mt-4 px-4 py-2 bg-shade text-white font-bold rounded-2xl"
+                        className=" w-full mt-4 px-4 py-4 bg-primary text-lg text-white font-bold rounded-2xl"
                     >
                         Register
                     </button>
-                    <p>
-                        <span className="font-bold">Capacity:</span> {"0/"+workshop.capacity}
-                    </p>
+
                 </div>
             </div>
             {isOpen && <RegisterPopup workshop={workshop} onClose={() => setIsOpen(false)}/>}
