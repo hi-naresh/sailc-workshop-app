@@ -4,13 +4,13 @@ import { getFirestore, doc, setDoc, getDoc, collection, getDocs } from 'firebase
 import { initializeApp } from 'firebase/app';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBJTd9-a8yMatDL4q-UktyNEzYKYIsjdlI",
-    authDomain: "sailc-work.firebaseapp.com",
-    projectId: "sailc-work",
-    storageBucket: "sailc-work.appspot.com",
-    messagingSenderId: "269578704379",
-    appId: "1:269578704379:web:9bb237d5215fa59c89e75e",
-    measurementId: "G-L7ZK6SZB54"
+    apiKey: "AIzaSyCX4t7IjrIf3eK7nsxQP1WGZuD1ZM0fFzY",
+    authDomain: "sailc-ws.firebaseapp.com",
+    projectId: "sailc-ws",
+    storageBucket: "sailc-ws.appspot.com",
+    messagingSenderId: "991012987027",
+    appId: "1:991012987027:web:8a942a070a120caa98ad66",
+    measurementId: "G-FSWFCQTCFN"
 };
 
 const useFirebase = () => {
