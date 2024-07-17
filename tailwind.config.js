@@ -43,7 +43,7 @@ module.exports = {
         "shade": "#63D5AC",
         "total-black": "#000800",
         'glass-bg': 'rgba(255, 255, 255, 0.1)',
-        yellow: "#FFA497",
+        "ternary": "#FFA497",
         stroke: {
           stroke: "#E3E8EF",
           dark: "#353943",

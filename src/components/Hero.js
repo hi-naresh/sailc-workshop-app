@@ -1,10 +1,13 @@
 import React from 'react';
 import Animation from "./animated";
 import UseLogin from "../hooks/useLogin";
+import {useAuth} from "../contexts/AuthContext";
 
 const HeroSection = () => {
     const Login = UseLogin();
-    
+    const { currentUser } = useAuth();
+
+
     const login = async () => {
         await Login.handleLogin();
     }
@@ -15,10 +18,16 @@ const HeroSection = () => {
                 <h1 className="text-3xl font-bold">Welcome to</h1>
                 <span className="text-5xl text-primary font-extrabold">SAILC</span>
                 <span className="text-5xl pb-4 text-secondary font-bold">Workshops</span>
-                <button
-                    onClick={login}
-                    className="bg-primary w-[60%] px-10 font-bold py-3 rounded-3xl">
-                    Register Now</button>
+                {currentUser ? (
+                    <div></div>
+                ) : (
+                    <button
+                        onClick={login}
+                        className="px-12 py-2 bg-blue-500 text-white rounded-3xl"
+                    >
+                        Register
+                    </button>
+                )}
                 <p className="text-lg text-text-secondary text-center p-8">
                     Institute for Applied Research in Integral Studies to foster inquiry and new thinking
                     in academia in the light of Sri Aurobindo’s integral world vision.</p>

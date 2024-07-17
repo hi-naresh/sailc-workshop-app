@@ -1,8 +1,7 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const FloatingNavbar = () => {
-    const liContainer = useRef(null);
 
     const tabs = [
         { name: 'Home', link: '/' },
@@ -13,8 +12,7 @@ const FloatingNavbar = () => {
     return (
         <div
             id="app"
-            ref={liContainer}
-            className="fixed z-50 xs:bottom-4 md:top-2 left-1/2 transform -translate-x-1/2 xs:w-[80%] xs:h-24 md:w-1/2 flex justify-center items-center"
+            className="fixed z-50 bottom-4 left-1/2 transform -translate-x-1/2 w-[90%] max-w-md flex justify-center items-center"
         >
             <ul className="relative w-full h-16 grid grid-cols-3 bg-dark bg-opacity-70 backdrop-blur-lg rounded-full shadow-lg">
                 {tabs.map((tab, index) => (
@@ -24,7 +22,7 @@ const FloatingNavbar = () => {
                     >
                         <NavLink
                             to={tab.link}
-                            className={({isActive}) =>
+                            className={({ isActive }) =>
                                 `relative z-10 px-4 py-4 rounded-full transition-colors duration-300 ${
                                     isActive ? 'bg-primary justify-center items-center flex mx-1 text-dark w-full' : 'text-white'
                                 }`

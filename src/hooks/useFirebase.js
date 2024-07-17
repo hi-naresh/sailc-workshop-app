@@ -63,7 +63,15 @@ const useFirebase = () => {
         return users;
     };
 
-    return { signInWithGoogle, registerForWorkshop, getWorkshops, getUserWorkshops, getUsers,auth };
+    const pushWorkshopData = async (workshops) => {
+        const workshopCollection = collection(db, 'workshops');
+        workshops.forEach(async (workshop) => {
+            const workshopDoc = doc(workshopCollection, workshop.id);
+            await setDoc(workshopDoc, workshop);
+        });
+    };
+
+    return { signInWithGoogle, registerForWorkshop, getWorkshops, pushWorkshopData, getUserWorkshops, getUsers,auth };
 };
 
 export { useFirebase };

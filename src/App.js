@@ -8,6 +8,7 @@ import './index.css';
 import HeroSection from "./components/Hero";
 import Admin from "./pages/MyAdmin";
 import { AuthProvider } from './contexts/AuthContext';
+import Dev from "./pages/dev";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/workshops" element={<MyWorkshops />} />
                 <Route path="/admin" element={<Admin />} />
+                <Route path="/dev" element={<Dev/>} />
             </Routes>
         </Router>
         </AuthProvider>
