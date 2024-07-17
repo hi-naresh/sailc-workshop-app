@@ -1,6 +1,6 @@
 // import { useState, useEffect } from 'react';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { getFirestore, doc, setDoc, getDoc, collection, getDocs, query } from 'firebase/firestore';
+import { getFirestore, doc, setDoc, getDoc, collection, getDocs } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
 
 const firebaseConfig = {

@@ -26,7 +26,7 @@ const Header = () => {
         <header className="bg-amber-50 text-black py-4">
             <div className="md:px-20 xs:px-8 mx-auto flex justify-between items-center px-4">
                 <Link to="/" className="flex gap-4 items-center text-2xl font-bold">
-                    <img className={"w-10 h-10"} src={"/sicon.svg"}/>
+                    <img className={"w-10 h-10"} alt={"logo"} src={"/sicon.svg"}/>
                 </Link>
                 <div className="md:hidden">
                     <button onClick={toggleMenu} className="text-black focus:outline-none">
