@@ -35,23 +35,15 @@ module.exports = {
         white: "#EEF0F4",
         black: "#121723",
         dark: "#1D2430",
-        primary: "#3AC8F7",
-        // green: "#65BD56",
+        primary: "#AEBFFF",
         //custom colors
-        "secondary": "#5BF55B",
+        "secondary": "#FF98BF",
         "text-primary": "#021823",
-        "text-secondary": "#35444a",
-        "shade": "#36BB83",
+        "text-secondary": "#4a4e53",
+        "shade": "#63D5AC",
         "total-black": "#000800",
         'glass-bg': 'rgba(255, 255, 255, 0.1)',
-        'gradient-start': '#5BF55B',
-        'gradient-end': '#3AC8F7',
-        yellow: "#FBB040",
-        "bg-color-dark": "#171C28",
-        "body-color": {
-          DEFAULT: "#20343e",
-          dark: "#959CB1",
-        },
+        yellow: "#FFA497",
         stroke: {
           stroke: "#E3E8EF",
           dark: "#353943",
@@ -77,51 +69,6 @@ module.exports = {
       },
       dropShadow: {
         three: "0px 5px 15px rgba(6, 8, 15, 0.05)",
-      },
-      animation: {
-        gradient: "gradient 6s ease-in infinite",
-        'expand-from-center': 'expand-from-center 0.5s ease-out forwards',
-        'gradient-fade': 'gradient-fade 3s infinite',
-        meteor: "meteor 5s ease-in infinite",
-        grid: "grid 15s linear infinite",
-        marquee: "marquee var(--duration) linear infinite",
-        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
-
-      },
-      keyframes: {
-        gradient: {
-          to: {
-            backgroundPosition: "var(--bg-size) 0",
-          },
-        },
-        'expand-from-center': {
-          '0%': { transform: 'scale-y(0)' },
-          '100%': { transform: 'scale-y(1)' },
-        },
-        'gradient-fade': {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0.5' },
-        },
-        meteor: {
-          "0%": { transform: "rotate(215deg) translateX(0)", opacity: 1 },
-          "70%": { opacity: 1 },
-          "100%": {
-            transform: "rotate(215deg) translateX(-500px)",
-            opacity: 0,
-          },
-        },
-        grid: {
-          "0%": { transform: "translateY(-50%)" },
-          "100%": { transform: "translateY(0)" },
-        },
-        marquee: {
-          from: { transform: "translateX(0)" },
-          to: { transform: "translateX(calc(-100% - var(--gap)))" },
-        },
-        "marquee-vertical": {
-          from: { transform: "translateY(0)" },
-          to: { transform: "translateY(calc(-100% - var(--gap)))" },
-        },
       },
       backgroundImage: {
         'text-gradient': 'linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)',

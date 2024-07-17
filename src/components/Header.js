@@ -1,53 +1,42 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { getAuth, signOut } from 'firebase/auth';
-import { useFirebase } from '../hooks/useFirebase';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import React, { useRef } from 'react';
+import { NavLink } from 'react-router-dom';
 
-const Header = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const auth = getAuth();
-    const user = auth.currentUser;
-    const { signInWithGoogle } = useFirebase();
+const FloatingNavbar = () => {
+    const liContainer = useRef(null);
 
-    const handleLogin = async () => {
-        await signInWithGoogle();
-    };
-
-    const handleLogout = async () => {
-        await signOut(auth);
-    };
-
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
-    };
+    const tabs = [
+        { name: 'Home', link: '/' },
+        { name: 'Profile', link: '/my-workshops' },
+        { name: 'More', link: '/about' },
+    ];
 
     return (
-        <header className="bg-amber-50 text-black py-4">
-            <div className="md:px-20 xs:px-8 mx-auto flex justify-between items-center px-4">
-                <Link to="/" className="flex gap-4 items-center text-2xl font-bold">
-                    <img className={"w-10 h-10"} alt={"logo"} src={"/sicon.svg"}/>
-                </Link>
-                <div className="md:hidden">
-                    <button onClick={toggleMenu} className="text-black focus:outline-none">
-                        {isOpen ? <FaTimes /> : <FaBars />}
-                    </button>
-                </div>
-                <nav className={`md:flex md:items-center md:space-x-4 ${isOpen ? 'block' : 'hidden'}`}>
-                    <Link to="/" className="block py-2 md:py-0 hover:underline">Home</Link>
-                    <Link to="/about" className="block py-2 md:py-0 hover:underline">About</Link>
-                    {user ? (
-                        <>
-                            <Link to="/my-workshops" className="block py-2 md:py-0 hover:underline">Profile</Link>
-                            <button onClick={handleLogout} className="block py-2 md:py-0 hover:underline">Logout</button>
-                        </>
-                    ) : (
-                        <button onClick={handleLogin} className="block py-2 md:py-0 hover:underline">Login</button>
-                    )}
-                </nav>
-            </div>
-        </header>
+        <div
+            id="app"
+            ref={liContainer}
+            className="fixed z-50 xs:bottom-4 md:top-2 left-1/2 transform -translate-x-1/2 xs:w-[80%] xs:h-24 md:w-1/2 flex justify-center items-center"
+        >
+            <ul className="relative w-full h-16 grid grid-cols-3 bg-dark bg-opacity-70 backdrop-blur-lg rounded-full shadow-lg">
+                {tabs.map((tab, index) => (
+                    <li
+                        key={index}
+                        className="relative flex justify-center items-center text-white font-bold cursor-pointer"
+                    >
+                        <NavLink
+                            to={tab.link}
+                            className={({isActive}) =>
+                                `relative z-10 px-4 py-4 rounded-full transition-colors duration-300 ${
+                                    isActive ? 'bg-primary justify-center items-center flex mx-1 text-dark w-full' : 'text-white'
+                                }`
+                            }
+                        >
+                            {tab.name}
+                        </NavLink>
+                    </li>
+                ))}
+            </ul>
+        </div>
     );
 };
 
-export default Header;
+export default FloatingNavbar;

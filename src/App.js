@@ -5,13 +5,17 @@ import About from './pages/About';
 import MyWorkshops from './pages/MyWorkshops';
 import Header from './components/Header';
 import './index.css';
+import HeroSection from "./components/Hero";
 
 function App() {
     return (
         <Router>
             <Header />
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<>
+                    <HeroSection />
+                    <Home />
+                </>} />
                 <Route path="/about" element={<About />} />
                 <Route path="/my-workshops" element={<MyWorkshops />} />
             </Routes>
