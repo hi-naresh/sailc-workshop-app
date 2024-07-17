@@ -6,9 +6,13 @@ import MyWorkshops from './pages/MyWorkshops';
 import Header from './components/Header';
 import './index.css';
 import HeroSection from "./components/Hero";
+import Admin from "./pages/MyAdmin";
+import { AuthProvider } from './contexts/AuthContext';
+
 
 function App() {
     return (
+        <AuthProvider>
         <Router>
             <Header />
             <Routes>
@@ -17,9 +21,11 @@ function App() {
                     <Home />
                 </>} />
                 <Route path="/about" element={<About />} />
-                <Route path="/my-workshops" element={<MyWorkshops />} />
+                <Route path="/workshops" element={<MyWorkshops />} />
+                <Route path="/admin" element={<Admin />} />
             </Routes>
         </Router>
+        </AuthProvider>
     );
 }
 

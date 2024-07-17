@@ -6,7 +6,7 @@ const FloatingNavbar = () => {
 
     const tabs = [
         { name: 'Home', link: '/' },
-        { name: 'Profile', link: '/my-workshops' },
+        { name: 'Profile', link: '/workshops' },
         { name: 'More', link: '/about' },
     ];
 

@@ -13,22 +13,22 @@ const firebaseConfig = {
     measurementId: "G-L7ZK6SZB54"
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+const useFirebase = () => {
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
 
-export const useFirebase = () => {
     const signInWithGoogle = async () => {
         const provider = new GoogleAuthProvider();
-        if (/Mobi|Android/i.test(navigator.userAgent)) {
-            await signInWithPopup(auth, provider);
-        } else {
-            await signInWithPopup(auth, provider);
-        }
+        const result = await signInWithPopup(auth, provider);
+        return result.user;
     };
+    const registerForWorkshop = async ({ name, school, number, workshopId, workshopTitle, registrationId }) => {
+        const user = auth.currentUser;
+        if (!user) {
+            throw new Error('User is not authenticated');
+        }
 
-    const registerForWorkshop = async ({ name, school, number, email, workshopId }) => {
-        const user = await signInWithGoogle();
         const userDocRef = doc(db, 'users', user.uid);
         const userDoc = await getDoc(userDocRef);
 
@@ -36,20 +36,34 @@ export const useFirebase = () => {
             throw new Error('You are already registered for a workshop');
         }
 
-        await setDoc(userDocRef, { name, school, number, email, workshopId });
+        await setDoc(userDocRef, { name, school, number, email: user.email, workshopId, workshopTitle, registrationId });
     };
 
     const getWorkshops = async () => {
         const q = collection(db, 'workshops');
         const querySnapshot = await getDocs(q);
-        return querySnapshot.docs.map(doc => doc.data());
+        const workshops = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        console.log('Workshops from Firestore:', workshops); // Debug log
+        return workshops;
     };
 
     const getUserWorkshops = async (userId) => {
         const userDocRef = doc(db, 'users', userId);
         const userDoc = await getDoc(userDocRef);
-        return userDoc.exists() ? userDoc.data().workshopId : null;
+        const userData = userDoc.exists() ? userDoc.data() : null;
+        console.log('User Data from Firestore:', userData); // Debug log
+        return userData;
     };
 
-    return { signInWithGoogle, registerForWorkshop, getWorkshops, getUserWorkshops };
+    const getUsers = async () => {
+        const q = collection(db, 'users');
+        const querySnapshot = await getDocs(q);
+        const users = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        console.log('Users from Firestore:', users); // Debug log
+        return users;
+    };
+
+    return { signInWithGoogle, registerForWorkshop, getWorkshops, getUserWorkshops, getUsers,auth };
 };
+
+export { useFirebase };
