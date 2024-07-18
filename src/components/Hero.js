@@ -23,7 +23,7 @@ const HeroSection = () => {
                 ) : (
                     <button
                         onClick={login}
-                        className="px-12 py-2 bg-blue-500 text-white rounded-3xl"
+                        className="px-12 py-2 xs:px-28 xs:py-3 bg-primary rounded-3xl"
                     >
                         Register
                     </button>

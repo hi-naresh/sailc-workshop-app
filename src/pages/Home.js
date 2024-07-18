@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import WorkshopCard from '../components/WorkshopCard';
 import workshopsData from '../data/workshopsData';
+import Footer from "../components/Footer";
 
 const Home = () => {
     return (
@@ -22,6 +23,8 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+            
+            <Footer />
 
             {/*<footer className="bg-gray-800 text-white text-center py-4">*/}
             {/*    <p>Made for SAILC by Naresh Jhawar</p>*/}

@@ -53,7 +53,7 @@ const About = () => {
                         </div>
                     ))}
                 </div>
-                <p className="text-center text-gray-600">The slot is allocated between 10:30 to 03:00 pm for those who
+                <p className=" text-justify text-gray-600">The slot is allocated between 10:30 to 03:00 pm for those who
                     want to visit in a group/groups, kindly select the appropriate slot/slots provided in the form or
                     scan the booking QR Code below.</p>
                 <img className="w-full xs:h-48 md:h-48 object-contain mb-8" src="/images/scan.png" alt="About Us"/>
