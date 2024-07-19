@@ -2,6 +2,7 @@ import React from 'react';
 import Animation from "./animated";
 import UseLogin from "../hooks/useLogin";
 import {useAuth} from "../contexts/AuthContext";
+import AnimatedButton from "./AnimatedButton";
 
 const HeroSection = () => {
     const Login = UseLogin();
@@ -21,16 +22,15 @@ const HeroSection = () => {
                 {currentUser ? (
                     <div></div>
                 ) : (
-                    <button
-                        onClick={login}
-                        className="px-12 py-2 xs:px-28 xs:py-3 bg-primary rounded-3xl"
-                    >
-                        Register
-                    </button>
+                    <AnimatedButton
+                        onClick={login}>
+                        <h3 className="text-white text-lg font-bold">
+                            Register
+                        </h3>
+                    </AnimatedButton>
                 )}
-                <p className="text-lg text-text-secondary text-center p-8">
-                    Institute for Applied Research in Integral Studies to foster inquiry and new thinking
-                    in academia in the light of Sri Aurobindo’s integral world vision.</p>
+                <p className="text-md text-gray-500 text-center p-10">
+                    We are excited to invite you to our upcoming Art and Craft Workshop! Join us for an inspiring day filled with creativity and camaraderie. We look forward to creating artful memories together!</p>
             </div>
         </section>
     );

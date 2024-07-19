@@ -9,6 +9,7 @@ import HeroSection from "./components/Hero";
 import Admin from "./pages/MyAdmin";
 import { AuthProvider } from './contexts/AuthContext';
 import Dev from "./pages/dev";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
                 <Route path="/admin" element={<Admin />} />
                 <Route path="/dev" element={<Dev/>} />
             </Routes>
+            <Footer />
         </Router>
         </AuthProvider>
     );

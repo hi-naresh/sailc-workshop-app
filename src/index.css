@@ -16,3 +16,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@keyframes pulse1 {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(5.5);
+  }
+}
+
+@keyframes spin1 {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(270deg);
+  }
+}
+
+.animate-pulse1 {
+  animation: pulse1 12s infinite ease-in-out alternate;
+}
+
+.animate-spin1 {
+  animation: spin1 12s infinite ease-out alternate;
+}
+
+

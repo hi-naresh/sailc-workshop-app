@@ -2,6 +2,7 @@
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { getFirestore, doc, setDoc, getDoc, collection, getDocs } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
+import {useCallback, useState} from "react";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCX4t7IjrIf3eK7nsxQP1WGZuD1ZM0fFzY",
@@ -17,6 +18,9 @@ const useFirebase = () => {
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
+
+    const [userWorkshops, setUserWorkshops] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     const signInWithGoogle = async () => {
         const provider = new GoogleAuthProvider();
@@ -47,13 +51,29 @@ const useFirebase = () => {
         return workshops;
     };
 
-    const getUserWorkshops = async (userId) => {
-        const userDocRef = doc(db, 'users', userId);
-        const userDoc = await getDoc(userDocRef);
-        const userData = userDoc.exists() ? userDoc.data() : null;
-        console.log('User Data from Firestore:', userData); // Debug log
-        return userData;
-    };
+    // const getUserWorkshops = async (userId) => {
+    //     const userDocRef = doc(db, 'users', userId);
+    //     const userDoc = await getDoc(userDocRef);
+    //     const userData = userDoc.exists() ? userDoc.data() : null;
+    //     console.log('User Data from Firestore:', userData); // Debug log
+    //     return userData;
+    // };
+
+    const getUserWorkshops = useCallback(async (userId) => {
+        if (userWorkshops) return userWorkshops; // Prevent multiple requests
+
+        setLoading(true);
+        const db = getFirestore();
+        const userDoc = doc(db, 'users', userId);
+        const docSnap = await getDoc(userDoc);
+
+        if (docSnap.exists()) {
+            setUserWorkshops(docSnap.data().workshops);
+        } else {
+            setUserWorkshops(null);
+        }
+        setLoading(false);
+    }, [userWorkshops]);
 
     const getUsers = async () => {
         const q = collection(db, 'users');
@@ -71,7 +91,7 @@ const useFirebase = () => {
         });
     };
 
-    return { signInWithGoogle, registerForWorkshop, getWorkshops, pushWorkshopData, getUserWorkshops, getUsers,auth };
+    return { signInWithGoogle, registerForWorkshop, getWorkshops, pushWorkshopData, getUserWorkshops, userWorkshops, loading, getUsers,auth };
 };
 
 export { useFirebase };
