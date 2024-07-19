@@ -36,8 +36,7 @@ const MyWorkshops = () => {
     return (
         <div className="h-screen">
             <div>
-                <img className={"-z-10 absolute top-0 h-40 object-cover rounded-b-3xl w-full"} src={"/images/head1.svg"} alt={"head"} />
-                <h1 className={"text-center pt-8 text-4xl font-bold text-white"}>My Profile</h1>
+                <img className={"-z-10 absolute top-0 h-40 object-cover w-full"} src={"/images/head1.svg"} alt={"head"} />
             </div>
             <div className="max-w-4xl items-center z-10 text-center">
                 {user ? (
@@ -72,7 +71,10 @@ const MyWorkshops = () => {
                     </div>
                 ) : (
                     <div className={"pt-8 flex flex-col items-center"}>
-                        <img src={"/images/avatar-person.svg"} alt={"avatar"} className={"w-24 mb-12 p-0.5 border-4 border-black rounded-full text-primary h-24"} />
+                        <img src={"/images/avatar-person.svg"} alt={"avatar"}
+                             className={"w-24 mb-12 p-0.5 border-4 border-primary rounded-full text-primary h-24"}/>
+                        <h1 className={"text-center pt-8 text-4xl mb-4 font-bold text-stroke-dark"}>My Profile</h1>
+
                         <p className={"text-gray-500 px-8 mb-8"}>
                             Please login to view your profile and your opted workshop.
                         </p>
