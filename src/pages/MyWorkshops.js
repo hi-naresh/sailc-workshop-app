@@ -66,7 +66,7 @@ const MyWorkshops = () => {
                                 <p className="mt-2">Workshop Details: <strong>{userWorkshops.workshopDetails}</strong></p>
                             </div>
                         ) : (
-                            <p>You are not registered for any workshop.</p>
+                            <p>You are logged in.</p>
                         )}
                     </div>
                 ) : (

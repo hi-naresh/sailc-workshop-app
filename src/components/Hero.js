@@ -17,8 +17,8 @@ const HeroSection = () => {
             <Animation />
             <div className="flex flex-col space-y-2 justify-center items-center">
                 <h1 className="text-3xl font-bold">Welcome to</h1>
-                <span className="text-5xl text-primary font-extrabold">SAILC</span>
-                <span className="text-5xl pb-4 text-secondary font-bold">Workshops</span>
+                <span className="text-5xl text-primary font-extrabold">KYB</span>
+                <span className="text-5xl pb-4 text-secondary font-bold">Support</span>
                 {currentUser ? (
                     <div></div>
                 ) : (
@@ -30,7 +30,8 @@ const HeroSection = () => {
                     </AnimatedButton>
                 )}
                 <p className="text-md text-gray-500 text-center p-10">
-                    We are excited to invite you to our upcoming Art and Craft Workshop! Join us for an inspiring day filled with creativity and camaraderie. We look forward to creating artful memories together!</p>
+                    You can write up your issues, you can report not working features, you can add ideas that could lead it to better vision.
+                </p>
             </div>
         </section>
     );

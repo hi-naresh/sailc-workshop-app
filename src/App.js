@@ -24,8 +24,8 @@ function App() {
                 </>} />
                 <Route path="/about" element={<About />} />
                 <Route path="/workshops" element={<MyWorkshops />} />
-                <Route path="/admin" element={<Admin />} />
-                <Route path="/dev" element={<Dev/>} />
+                <Route path="/admin-x333" element={<Admin />} />
+                {/*<Route path="/dev" element={<Dev/>} />*/}
             </Routes>
             <Footer />
         </Router>
