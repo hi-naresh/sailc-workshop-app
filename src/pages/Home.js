@@ -1,7 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import WorkshopCard from '../components/WorkshopCard';
-import workshopsData from '../data/workshopsData';
 import FeedbackForm from "../components/FeedbackForm";
 
 const Home = () => {

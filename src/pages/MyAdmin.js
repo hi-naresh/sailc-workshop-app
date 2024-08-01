@@ -1,11 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useFirebase } from '../hooks/useFirebase';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import React from 'react';
 import ExportFeedback from "../components/Export";
 
 const Admin = () => {
-    const auth = getAuth();
-
     return (
         <div className="admin-page py-20">
             <div className="container mx-auto">

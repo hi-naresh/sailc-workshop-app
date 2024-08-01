@@ -8,7 +8,6 @@ import './index.css';
 import HeroSection from "./components/Hero";
 import Admin from "./pages/MyAdmin";
 import { AuthProvider } from './contexts/AuthContext';
-import Dev from "./pages/dev";
 import Footer from "./components/Footer";
 
 
