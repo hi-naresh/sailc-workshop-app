@@ -1,17 +1,25 @@
 import React from 'react';
 import Animation from "./animated";
-import UseLogin from "../hooks/useLogin";
+// import UseLogin from "../hooks/useLogin";
 import {useAuth} from "../contexts/AuthContext";
 import AnimatedButton from "./AnimatedButton";
+import {getAuth, GoogleAuthProvider, signInWithPopup} from "firebase/auth";
 
 const HeroSection = () => {
-    const Login = UseLogin();
+    // const Login = UseLogin();
     const { currentUser } = useAuth();
+    const auth = getAuth();
 
+
+
+    
 
     const login = async () => {
-        await Login.handleLogin();
-    }
+        const provider = new GoogleAuthProvider();
+        await signInWithPopup(auth, provider);
+    };
+    
+    
     return (
         <section className={"xs:pt-0 md:pt-20"}>
             <Animation />
@@ -22,11 +30,12 @@ const HeroSection = () => {
                 {currentUser ? (
                     <div></div>
                 ) : (
-                    <AnimatedButton
-                        onClick={login}>
-                        <h3 className="text-white text-lg font-bold">
+                    <AnimatedButton>
+                        <div
+                            onClick={login}
+                            className={"text-white text-lg font-bold"}>
                             Register
-                        </h3>
+                        </div>
                     </AnimatedButton>
                 )}
                 <p className="text-md text-gray-500 text-center p-10">
