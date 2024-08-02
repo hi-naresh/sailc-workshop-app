@@ -30,13 +30,18 @@ const HeroSection = () => {
                 {currentUser ? (
                     <div></div>
                 ) : (
-                    <AnimatedButton>
-                        <div
-                            onClick={login}
-                            className={"text-white text-lg font-bold"}>
-                            Register
-                        </div>
-                    </AnimatedButton>
+                    <>
+                        <h3 className="text-lg font-bold">Register Now and have a chance to try out the
+                            app. </h3>
+                        <AnimatedButton>
+                            <div
+                                onClick={login}
+                                className={"text-white text-lg font-bold"}>
+                                Register
+                            </div>
+                        </AnimatedButton>
+
+                    </>
                 )}
                 <p className="text-md text-gray-500 text-center p-10">
                     You can write up your issues, you can report not working features, you can add ideas that could lead it to better vision.
